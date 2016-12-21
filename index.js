@@ -9,7 +9,8 @@ var semver = require('semver');
 var color = require('color');
 var BluebirdPromise = require('bluebird');
 
-var sharp = require('./build/Release/sharp');
+var sharp = require('bindings')('sharp');
+
 
 // Versioning
 var versions = {
