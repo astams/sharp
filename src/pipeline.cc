@@ -94,12 +94,12 @@ class PipelineWorker : public Nan::AsyncWorker {
       }
 
       // Rotate pre-extract
-	  if (baton->rotateBeforePreExtract) {
+	    if (baton->rotateBeforePreExtract) {
         if (rotation != VIPS_ANGLE_D0) {
           image = image.rot(rotation);
           sharp::RemoveExifOrientation(image);
         }
-        if (baton->rotationAngle != 0.0) {
+        else if (baton->rotationAngle != 0.0) {
           std::vector<double> background;
           std::tie(image, background) = sharp::ApplyAlpha(image, baton->rotationBackground);
           image = image.rotate(baton->rotationAngle, VImage::option()->set("background", background));
